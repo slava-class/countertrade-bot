@@ -21,10 +21,18 @@ const USE_BYBIT_GLOBAL = true;
 let BASE_URL = USE_TESTNET
   ? "https://api-testnet.bybit.com"
   : "https://api.bybit.com";
+
+let WS_URL = USE_TESTNET
+  ? "wss://stream-testnet.bybit.com/v5/private"
+  : "wss://stream.bybit.com/v5/private";
 if (USE_BYBIT_GLOBAL) {
   BASE_URL = USE_TESTNET
     ? "https://api-testnet.bybitglobal.com"
     : "https://api.bybitglobal.com";
+
+  WS_URL = USE_TESTNET
+    ? "wss://stream-testnet.bybitglobal.com/v5/private"
+    : "wss://stream.bybitglobal.com/v5/private";
 }
 
 const TRADING_SUBACCOUNT_API_KEY = process.env.TRADING_SUBACCOUNT_API_KEY;
@@ -81,6 +89,7 @@ const wsClient = new WebsocketClient(
     testnet: USE_TESTNET,
     market: "v5",
     reconnectTimeout: RECONNECT_TIMEOUT,
+    wsUrl: WS_URL,
     restOptions: {
       baseUrl: BASE_URL,
     },
