@@ -1,0 +1,19 @@
+{
+  "name": "countertrade-bot",
+  "version": "0.0.1",
+  "dependencies": {
+    "bybit-api": "^3.10.11"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "module": "index.ts",
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "package": "cp .env.example countertrade.ts package.json tsconfig.json ~/workspaces/countertrade-bot && cd ~/workspaces/countertrade-bot && bun i",
+    "countertrade": "bun run countertrade.ts"
+  },
+  "type": "module"
+}

@@ -1,0 +1,11 @@
+cloned-repos/
+node_modules/
+.env
+
+bundled/
+pocketbase
+pocketbase_0.20.5_darwin_arm64.zip
+pb_data/
+.DS_Store
+typescriptTrace/
+*.vsix
