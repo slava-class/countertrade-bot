@@ -16,6 +16,16 @@ console.log(`Running countertrade-bot version ${version}`);
 const LOGGING_ENABLED = false;
 const USE_TESTNET = true;
 const COUNTER_MULTIPLIER = 10;
+const USE_BYBIT_GLOBAL = true;
+
+let BASE_URL = USE_TESTNET
+  ? "https://api-testnet.bybit.com"
+  : "https://api.bybit.com";
+if (USE_BYBIT_GLOBAL) {
+  BASE_URL = USE_TESTNET
+    ? "https://api-testnet.bybitglobal.com"
+    : "https://api.bybitglobal.com";
+}
 
 const TRADING_SUBACCOUNT_API_KEY = process.env.TRADING_SUBACCOUNT_API_KEY;
 const TRADING_SUBACCOUNT_API_SECRET = process.env.TRADING_SUBACCOUNT_API_SECRET;
@@ -61,6 +71,7 @@ const restClient = new RestClientV5({
   key: COUNTERTRADING_SUBACCOUNT_API_KEY,
   secret: COUNTERTRADING_SUBACCOUNT_API_SECRET,
   testnet: USE_TESTNET,
+  baseUrl: BASE_URL,
 });
 
 const wsClient = new WebsocketClient(
@@ -70,6 +81,9 @@ const wsClient = new WebsocketClient(
     testnet: USE_TESTNET,
     market: "v5",
     reconnectTimeout: RECONNECT_TIMEOUT,
+    restOptions: {
+      baseUrl: BASE_URL,
+    },
   },
   customLogger,
 );

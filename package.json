@@ -12,8 +12,8 @@
     "typescript": "^5.0.0"
   },
   "scripts": {
-    "package": "cp .env.example countertrade.ts package.json tsconfig.json ~/workspaces/countertrade-bot && cd ~/workspaces/countertrade-bot && bun i",
-    "countertrade": "bun run countertrade.ts"
+    "countertrade": "bun run countertrade.ts",
+    "package": "cp .env.example countertrade.ts package.json tsconfig.json ~/workspaces/countertrade-bot && cd ~/workspaces/countertrade-bot && bun i"
   },
   "type": "module"
 }
