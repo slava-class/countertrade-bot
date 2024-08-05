@@ -147,7 +147,7 @@ const tradingWsClient = new WebsocketClient(
   customLogger,
 );
 
-checkFetchBalances();
+// checkFetchBalances();
 
 async function checkFetchBalances() {
   const tradingBalance = await getBalanceOfCoin(
@@ -252,10 +252,6 @@ async function placeCounterOrder(orderData: WSAccountOrderV5) {
     return;
   }
 
-  const tradeValue = Number.parseFloat(orderData.cumExecValue);
-
-  const marginPercentage = tradeValue / tradingAccountBalance.equity;
-
   const countertradeAccountBalance = await getBalanceOfCoin(
     counterRestClient,
     ASSUMING_COIN,
@@ -266,6 +262,10 @@ async function placeCounterOrder(orderData: WSAccountOrderV5) {
     logger.error("Error fetching counter-trading account balance");
     return;
   }
+
+  const tradeValue = Number.parseFloat(orderData.cumExecValue);
+
+  const marginPercentage = tradeValue / tradingAccountBalance.equity;
 
   const counterTradeValue =
     countertradeAccountBalance.equity * marginPercentage;
