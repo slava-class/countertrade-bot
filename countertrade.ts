@@ -147,7 +147,7 @@ const tradingWsClient = new WebsocketClient(
   customLogger,
 );
 
-// checkFetchBalances();
+checkFetchBalances();
 
 async function checkFetchBalances() {
   const tradingBalance = await getBalanceOfCoin(
