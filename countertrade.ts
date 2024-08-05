@@ -376,6 +376,7 @@ SL: ${counterOrder.stopLoss || "None"}
         break;
       }
       default: {
+        console.log({ response });
         logger.info("Countertrade result code", response.retCode);
         logger.info("Countertrade result message", response.retMsg);
         logger.info("Counter order placed:", response.result);
